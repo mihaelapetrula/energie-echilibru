@@ -792,7 +792,7 @@
     if (error) {
       btn.textContent = 'Eroare — încearcă din nou';
       btn.disabled = false;
-      console.error(error);
+      alert('Eroare: ' + JSON.stringify(error));
     } else {
       this.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
