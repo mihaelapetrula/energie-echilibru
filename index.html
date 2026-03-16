@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energie &amp; Echilibru — Relații &amp; Manifestare</title>
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── VARIABILE ── */
+    :root {
+      --cream:     #FDF8F0;
+      --beige:     #F5EAD5;
+      --gold:      #C4923A;
+      --gold-lt:   #E0B96A;
+      --terra:     #B5593B;
+      --brown:     #3D2412;
+      --brown-md:  #6B3A1F;
+      --brown-lt:  #A06040;
+      --white:     #FFFFFF;
+      --text:      #3D2412;
+      --muted:     #7A5535;
+    }
+
+    /* ── BASE ── */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+    h1, h2, h3 { line-height: 1.3; }
+    p { margin-bottom: 1rem; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 840px; margin: 0 auto; padding: 0 1.5rem; }
+    .section    { padding: 5rem 1.5rem; }
+
+    /* ── LABEL TAG ── */
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 52px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 2px;
+      margin: 0.5rem 0 1.8rem;
+    }
+    .divider--center { margin-left: auto; margin-right: auto; }
+
+    /* ── H2 ── */
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: bold;
+      color: var(--brown);
+      margin-bottom: 0.4rem;
+    }
+    h2 em { color: var(--terra); font-style: normal; }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 2.4rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,36,18,0.25); }
+    .btn--gold   { background: linear-gradient(135deg, var(--gold), var(--gold-lt)); color: var(--brown); }
+    .btn--dark   { background: var(--brown); color: var(--gold-lt); }
+    .btn--outline {
+      background: transparent;
+      border: 2px solid var(--gold-lt);
+      color: var(--gold-lt);
+    }
+    .btn--full { display: block; width: 100%; text-align: center; }
+
+    /* ════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════ */
+    .hero {
+      background: linear-gradient(160deg, #2E1A0A 0%, #5C2E0E 45%, #8A4520 100%);
+      color: var(--cream);
+      padding: 7rem 1.5rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 65% 25%, rgba(196,146,58,0.2) 0%, transparent 60%);
+    }
+    .hero__label {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold-lt);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--gold-lt); }
+    .hero__subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: rgba(253,248,240,0.78);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+    .hero__desc {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
+      color: rgba(253,248,240,0.82);
+    }
+
+    /* ════════════════════════════════════════
+       INTRO
+    ════════════════════════════════════════ */
+    .intro { background: var(--beige); }
+    .intro-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media(max-width:580px){ .intro-cards { grid-template-columns: 1fr; } }
+    .intro-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 2px 14px rgba(61,36,18,0.08);
+      border-top: 3px solid var(--gold);
+    }
+    .intro-card h3 { color: var(--terra); font-size: 1rem; margin-bottom: 0.5rem; }
+    .intro-card p  { font-size: 0.93rem; margin: 0; color: var(--muted); }
+
+    /* ════════════════════════════════════════
+       TEME CICLU
+    ════════════════════════════════════════ */
+    .teme { background: var(--white); }
+    .teme-list { list-style: none; margin-top: 1.8rem; }
+    .teme-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(196,146,58,0.18);
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .teme-list li:last-child { border-bottom: none; }
+    .teme-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.6rem;
+      margin-top: 0.48rem;
+      flex-shrink: 0;
+    }
+
+    /* ════════════════════════════════════════
+       DE CE NU FUNCȚIONEAZĂ
+    ════════════════════════════════════════ */
+    .why { background: var(--cream); }
+    .reason-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .reason {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 2px 12px rgba(61,36,18,0.07);
+      border-left: 4px solid var(--terra);
+    }
+    .reason__num {
+      min-width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: var(--brown);
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .reason h3 { color: var(--terra); font-size: 0.98rem; margin-bottom: 0.3rem; }
+    .reason p  { font-size: 0.92rem; margin: 0; color: var(--muted); }
+
+    /* ════════════════════════════════════════
+       CUM FUNCȚIONEAZĂ
+    ════════════════════════════════════════ */
+    .how {
+      background: linear-gradient(160deg, #3D2412 0%, #6B3A1F 100%);
+      color: var(--cream);
+    }
+    .how .tag    { color: var(--gold-lt); }
+    .how h2      { color: var(--gold-lt); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .how-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(196,146,58,0.3);
+      border-radius: 12px;
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+    }
+    .how-card__icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+    .how-card h3    { color: var(--gold-lt); font-size: 0.92rem; margin-bottom: 0.4rem; }
+    .how-card p     { font-size: 0.85rem; color: rgba(253,248,240,0.72); margin: 0; }
+
+    /* ════════════════════════════════════════
+       CE SE SCHIMBĂ
+    ════════════════════════════════════════ */
+    .transform { background: var(--beige); }
+    .transform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.3rem;
+      margin-top: 2rem;
+    }
+    .transform-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 2px 12px rgba(61,36,18,0.07);
+    }
+    .transform-card__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: var(--brown);
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+    .transform-card h3 { color: var(--terra); font-size: 0.93rem; margin-bottom: 0.4rem; }
+    .transform-card p  { font-size: 0.88rem; margin: 0; color: var(--muted); }
+
+    /* ════════════════════════════════════════
+       VARIANTE
+    ════════════════════════════════════════ */
+    .plans-section { background: var(--white); }
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    @media(max-width:620px){ .plans { grid-template-columns: 1fr; } }
+
+    .plan {
+      border-radius: 16px;
+      padding: 2.2rem;
+    }
+    .plan--standard {
+      background: var(--cream);
+      border: 2px solid var(--beige);
+      box-shadow: 0 2px 20px rgba(61,36,18,0.07);
+    }
+    .plan--vip {
+      background: linear-gradient(150deg, #3D2412, #6B3A1F);
+      color: var(--cream);
+      box-shadow: 0 8px 36px rgba(61,36,18,0.28);
+    }
+    .plan__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 0.25rem 0.85rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .plan--standard .plan__badge { background: var(--beige); color: var(--brown-md); }
+    .plan--vip      .plan__badge { background: var(--gold); color: var(--brown); }
+
+    .plan h3 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .plan--standard h3 { color: var(--brown); }
+    .plan--vip      h3 { color: var(--gold-lt); }
+
+    .plan__price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0.8rem 0 1.4rem;
+    }
+    .plan--standard .plan__price { color: var(--terra); }
+    .plan--vip      .plan__price { color: var(--gold-lt); }
+
+    .plan__list { list-style: none; margin-bottom: 1.4rem; }
+    .plan__list li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(61,36,18,0.08);
+      font-size: 0.93rem;
+    }
+    .plan--vip .plan__list li { border-color: rgba(253,248,240,0.12); color: rgba(253,248,240,0.9); }
+    .plan__list li:last-child { border-bottom: none; }
+    .plan__list li::before { content: '✓'; color: var(--gold); font-weight: bold; flex-shrink: 0; }
+    .plan--vip .plan__list li::before { color: var(--gold-lt); }
+
+    .plan__note {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .plan--vip .plan__note { color: rgba(253,248,240,0.6); }
+
+    /* ════════════════════════════════════════
+       CUI SE ADRESEAZĂ
+    ════════════════════════════════════════ */
+    .cui {
+      background: linear-gradient(155deg, #3D2412 0%, #6B3A1F 100%);
+      color: var(--cream);
+    }
+    .cui .tag  { color: var(--gold-lt); }
+    .cui h2    { color: var(--gold-lt); }
+    .cui-list  { list-style: none; margin-top: 1.8rem;
+                 display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media(max-width:580px){ .cui-list { grid-template-columns: 1fr; } }
+    .cui-list li {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(196,146,58,0.25);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: rgba(253,248,240,0.88);
+    }
+    .cui-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.58rem;
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    /* ════════════════════════════════════════
+       FORMULAR
+    ════════════════════════════════════════ */
+    .form-section { background: var(--cream); }
+    .form-wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 40px rgba(61,36,18,0.12);
+      text-align: center;
+    }
+    @media(max-width:560px){ .form-wrap { padding: 2rem 1.4rem; } }
+    .form-wrap h2 { color: var(--brown); margin-bottom: 0.4rem; }
+    .form-wrap > p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.8rem; }
+
+    .form-group { margin-bottom: 1.2rem; text-align: left; }
+    .form-group label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: bold;
+      color: var(--brown-md);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #D6C4AB;
+      border-radius: 10px;
+      font-size: 0.98rem;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus { border-color: var(--gold); }
+
+    .success-msg {
+      display: none;
+      background: #F0F7EC;
+      border: 1px solid #9AC58A;
+      color: #2E5C22;
+      padding: 1.2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      margin-top: 1.2rem;
+    }
+
+    /* ════════════════════════════════════════
+       CTA BANNER
+    ════════════════════════════════════════ */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--gold) 0%, #D4A030 100%);
+      text-align: center;
+      padding: 4.5rem 1.5rem;
+    }
+    .cta-banner h2 { color: var(--brown); }
+    .cta-banner p  { color: rgba(61,36,18,0.75); max-width: 540px; margin: 0 auto 2rem; }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    footer {
+      background: var(--brown);
+      color: rgba(253,248,240,0.48);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.84rem;
+    }
+    footer strong { color: var(--gold-lt); }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE MISC
+    ════════════════════════════════════════ */
+    @media(max-width:480px){
+      .section { padding: 3.5rem 1.2rem; }
+      .hero    { padding: 5rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ HERO ══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__label">Comunitatea Energie &amp; Echilibru</div>
+    <h1>Relații &amp;<br /><span>Manifestare</span></h1>
+    <p class="hero__subtitle">Noul ciclu de lucru — 3 luni de transformare reală</p>
+    <p class="hero__desc">
+      Un spațiu dedicat femeilor care vor să înțeleagă cum le influențează relațiile
+      procesul de manifestare — și cum pot construi o viață aliniată cu cine sunt cu adevărat.
+    </p>
+    <a href="#inscriere" class="btn btn--gold">Vreau să fac parte din comunitate</a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ INTRO ══ -->
+<section class="section intro">
+  <div class="container">
+    <span class="tag">Despre comunitate</span>
+    <h2>Un spațiu de creștere în <em>cicluri de 3 luni</em></h2>
+    <div class="divider"></div>
+    <p>
+      Comunitatea Energie &amp; Echilibru funcționează în cicluri de lucru de câte 3 luni,
+      fiecare ciclu dedicat unei teme alese din experiențele reale prin care trecem
+      atunci când vrem să schimbăm ceva — în relații, în muncă, în modul în care ne
+      raportăm la viitor.
+    </p>
+    <p>
+      Noul ciclu este dedicat unui subiect esențial, dar des ignorat:
+      <strong>relațiile în care trăim și modul în care acestea ne influențează procesul de manifestare.</strong>
+    </p>
+    <div class="intro-cards">
+      <div class="intro-card">
+        <h3>Ritm propriu</h3>
+        <p>Materialele și exercițiile pot fi parcurse în ritmul tău, fără presiune, cu o direcție clară.</p>
+      </div>
+      <div class="intro-card">
+        <h3>Comunitate activă</h3>
+        <p>Nu lucrezi singură. Grupul și întâlnirile lunare live îți oferă sprijin constant pe durata celor 3 luni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ TEME ══ -->
+<section class="section teme">
+  <div class="container">
+    <span class="tag">Ce explorăm în acest ciclu</span>
+    <h2>Relații &amp; <em>Manifestare</em></h2>
+    <div class="divider"></div>
+    <p>
+      De multe ori ne concentrăm pe tehnici și obiective, ignorând un factor extrem de important:
+      relațiile pot deveni spații de susținere și creștere — sau spații care
+      ne blochează energia, încrederea și direcția.
+    </p>
+    <p>Vom lucra concret pe teme precum:</p>
+    <ul class="teme-list">
+      <li>Frica de viitor și teama că nu vom face față schimbărilor</li>
+      <li>Ce se întâmplă când lucrurile pe care le dorim nu se manifestă</li>
+      <li>Cum gestionăm furia sau frustrarea când eforturile nu dau rezultate</li>
+      <li>Rolul relațiilor în ceea ce vrem să construim în viața noastră</li>
+      <li>Cum ne susțin sau ne sabotează relațiile în procesul de manifestare</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ DE CE NU FUNCȚIONEAZĂ ══ -->
+<section class="section why">
+  <div class="container">
+    <span class="tag">O întrebare importantă</span>
+    <h2>De ce nu funcționează <em>manifestarea uneori?</em></h2>
+    <div class="divider"></div>
+    <p>
+      Poate ai aplicat deja tehnici — vizualizare, afirmații, jurnal de recunoștință.
+      Și totuși, ceva nu se mișcă. Nu este vina ta și nu este că „nu funcționează".
+      <strong>Este că lipsește o piesă esențială.</strong>
+    </p>
+    <div class="reason-list">
+      <div class="reason">
+        <div class="reason__num">1</div>
+        <div>
+          <h3>Blocajele emoționale nerezolvate</h3>
+          <p>Dacă în corp și în emoții există frică, rușine sau furie nedigerate, energia ta trimite semnale contradictorii — indiferent ce gândești conștient.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason__num">2</div>
+        <div>
+          <h3>Relațiile care consumă mai mult decât oferă</h3>
+          <p>Mediul relațional ne poate susține sau sabota constant, fără să ne dăm seama. O relație toxică poate anula orice efort de creștere interioară.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason__num">3</div>
+        <div>
+          <h3>Lipsa unui spațiu de lucru constant</h3>
+          <p>Schimbarea reală nu vine dintr-o singură sesiune sau un curs. Vine din lucrul constant, aplicat, cu sprijin și direcție — exact ce oferă acest ciclu.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason__num">4</div>
+        <div>
+          <h3>Așteptarea rezultatelor fără aliniere interioară</h3>
+          <p>Dorim lucruri din exterior înainte să fim aliniate interior cu ele. Alinierea nu vine din tehnici — vine din înțelegere și procesare reală.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ CUM FUNCȚIONEAZĂ ══ -->
+<section class="section how">
+  <div class="container">
+    <span class="tag">Structura programului</span>
+    <h2>Ce primești în <em>cele 3 luni</em></h2>
+    <div class="divider"></div>
+    <p style="color: rgba(253,248,240,0.8);">
+      Un spațiu de lucru constant, dar flexibil — fiecare participantă parcurge materialele în ritmul propriu.
+    </p>
+    <div class="how-grid">
+      <div class="how-card">
+        <span class="how-card__icon">🎧</span>
+        <h3>Materiale audio</h3>
+        <p>Săptămânale, cu ghidaj și reflecții pentru procesul tău interior</p>
+      </div>
+      <div class="how-card">
+        <span class="how-card__icon">📄</span>
+        <h3>Materiale text</h3>
+        <p>Exerciții de reflecție și teme aplicabile în viața reală</p>
+      </div>
+      <div class="how-card">
+        <span class="how-card__icon">🎥</span>
+        <h3>Întâlniri live lunare</h3>
+        <p>Aprofundăm tema, discutăm experiențele și clarificăm întrebările</p>
+      </div>
+      <div class="how-card">
+        <span class="how-card__icon">👥</span>
+        <h3>Comunitate online</h3>
+        <p>Acces la grup și discuții pe toată durata celor 3 luni</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ CE SE SCHIMBĂ ══ -->
+<section class="section transform">
+  <div class="container">
+    <span class="tag">Rezultate reale</span>
+    <h2>Ce se schimbă după <em>cele 3 luni</em></h2>
+    <div class="divider"></div>
+    <p>
+      Nu promitem transformări magice. Promitem un proces real, aplicat —
+      cu efecte concrete în felul în care te raportezi la tine, la relații și la ceea ce construiești.
+    </p>
+    <div class="transform-grid">
+      <div class="transform-card">
+        <div class="transform-card__num">1</div>
+        <h3>Claritate interioară</h3>
+        <p>Înțelegi ce vrei și de ce unele lucruri au întârziat să apară în viața ta.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-card__num">2</div>
+        <h3>Tipare recunoscute</h3>
+        <p>Identifici tiparele relaționale care te țin pe loc și știi cum să le abordezi diferit.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-card__num">3</div>
+        <h3>Emoții gestionate</h3>
+        <p>Reacționezi diferit la frustrare și eșec — cu mai multă înțelegere față de tine.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-card__num">4</div>
+        <h3>Energie orientată</h3>
+        <p>Energia ta este mai puțin risipită în relații sau situații care nu îți servesc.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-card__num">5</div>
+        <h3>Manifestare aliniată</h3>
+        <p>Procesul de creare devine mai natural — pentru că vine din aliniere, nu din luptă.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-card__num">6</div>
+        <h3>O comunitate reală</h3>
+        <p>Pleci cu un grup de femei care au parcurs același proces și continuă să se susțină.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ VARIANTE ══ -->
+<section class="section plans-section" id="variante">
+  <div class="container">
+    <span class="tag">Variante de acces</span>
+    <h2>Alege varianta <em>potrivită pentru tine</em></h2>
+    <div class="divider"></div>
+    <div class="plans">
+
+      <div class="plan plan--standard">
+        <span class="plan__badge">Standard</span>
+        <h3>Acces Standard</h3>
+        <div class="plan__price">200–250 lei <span style="font-size:0.85rem; font-weight:normal; color:var(--muted);">/ lună</span></div>
+        <ul class="plan__list">
+          <li>Toate materialele audio ale programului</li>
+          <li>Materiale text și exerciții de reflecție</li>
+          <li>Teme de lucru aplicabile în viața reală</li>
+          <li>Participare la întâlnirile live lunare</li>
+          <li>Acces la comunitatea online — 3 luni</li>
+        </ul>
+        <p class="plan__note">
+          Potrivit pentru femeile care vor să lucreze independent,
+          folosind direcția și materialele oferite.
+        </p>
+        <a href="#inscriere" class="btn btn--gold btn--full">Vreau Acces Standard</a>
+      </div>
+
+      <div class="plan plan--vip">
+        <span class="plan__badge">VIP · Locuri limitate</span>
+        <h3>Acces VIP</h3>
+        <div class="plan__price">Preț anunțat separat</div>
+        <ul class="plan__list">
+          <li>Tot ce include Accesul Standard</li>
+          <li>Acces la sesiunile de <strong style="color:var(--gold-lt);">hot seat</strong></li>
+          <li>Lucru direct pe situația ta personală, în cadrul grupului</li>
+          <li>Explorare profundă a mecanismelor interioare</li>
+          <li>Beneficii pentru toți membrii care urmăresc procesul</li>
+        </ul>
+        <p class="plan__note">Maxim 6–8 locuri disponibile.</p>
+        <a href="#inscriere" class="btn btn--gold btn--full">Vreau Acces VIP</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ CUI SE ADRESEAZĂ ══ -->
+<section class="section cui">
+  <div class="container">
+    <span class="tag">Cui se adresează</span>
+    <h2>Acest ciclu este <em>pentru tine dacă...</em></h2>
+    <div class="divider"></div>
+    <ul class="cui-list">
+      <li>Simți că relațiile influențează puternic direcția ta de viață</li>
+      <li>Vrei să înțelegi mai bine reacțiile interioare când lucrurile nu merg cum ai sperat</li>
+      <li>Cauți un cadru de creștere fără presiune, dar cu direcție</li>
+      <li>Vrei să lucrezi constant cu tine, nu doar în momente de criză</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ FORMULAR ══ -->
+<section class="section form-section" id="inscriere">
+  <div class="container">
+    <div class="form-wrap">
+      <span class="tag" style="display:block; text-align:center;">Înscrie-te acum</span>
+      <h2>Da, vreau să fac parte<br />din comunitate</h2>
+      <div class="divider divider--center"></div>
+      <p>Completează formularul de mai jos și îți vom trimite toate detaliile despre acces și plată.</p>
+
+      <form id="inscriereForm">
+        <div class="form-group">
+          <label for="nume">Numele tău</label>
+          <input type="text" id="nume" name="nume" placeholder="Prenume și nume" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Adresa de email</label>
+          <input type="email" id="email" name="email" placeholder="adresa@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="telefon">Număr de telefon <span style="font-weight:normal; opacity:0.6;">(opțional)</span></label>
+          <input type="tel" id="telefon" name="telefon" placeholder="07xx xxx xxx" />
+        </div>
+        <div class="form-group">
+          <label for="varianta">Varianta de acces dorită</label>
+          <select id="varianta" name="varianta" required>
+            <option value="" disabled selected>Selectează...</option>
+            <option value="standard">Acces Standard — 200–250 lei / lună</option>
+            <option value="vip">Acces VIP — locuri limitate</option>
+            <option value="nedecis">Nu am decis încă</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--gold btn--full" style="margin-top:0.5rem;">
+          Vreau să mă înscriu →
+        </button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        ✅ <strong>Mulțumesc!</strong> Înregistrarea ta a fost primită. Vei primi în curând un email cu toate detaliile despre acces și plată.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ FOOTER ══ -->
+<footer>
+  <p><strong>Comunitatea Energie &amp; Echilibru</strong></p>
+  <p style="margin-top:0.5rem;">© 2025 · Toate drepturile rezervate</p>
+</footer>
+
+<script>
+  document.getElementById('inscriereForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
