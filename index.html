@@ -768,11 +768,35 @@
   <p style="margin-top:0.5rem;">© 2025 · Toate drepturile rezervate</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  document.getElementById('inscriereForm').addEventListener('submit', function(e) {
+  const supabase = window.supabase.createClient(
+    'https://gkltzzveszvbjoakejup.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrbHR6enZlc3p2YmpvYWtlanVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2Njk3OTgsImV4cCI6MjA4OTI0NTc5OH0.PQJWea8mqamVwWKCBKqvMgsAtyPQvj7yP1JSWP7UpU0'
+  );
+
+  document.getElementById('inscriereForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Se trimite...';
+    btn.disabled = true;
+
+    const { error } = await supabase.from('inscrieri').insert([{
+      nume:     document.getElementById('nume').value,
+      email:    document.getElementById('email').value,
+      telefon:  document.getElementById('telefon').value,
+      varianta: document.getElementById('varianta').value
+    }]);
+
+    if (error) {
+      btn.textContent = 'Eroare — încearcă din nou';
+      btn.disabled = false;
+      console.error(error);
+    } else {
+      this.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }
   });
 </script>
 
